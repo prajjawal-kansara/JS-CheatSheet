@@ -484,3 +484,61 @@ ourDog.bark1 = "ara araa";                      //using dot notation
 
 console.log(ourDog.bark1);
 console.log(ourDog['bark']);
+
+delete ourDog.bark1;                           //delete
+
+//!Testing Objects for properties:
+function checkObj(checkProp){
+    if (ourDog.hasOwnProperty(checkProp)){
+        return myObj[checkProp];
+    }else{
+        return "Not Found";
+    }
+}
+console.log(checkObj("bark1"));
+
+
+//!Manipulating Complex Objects:
+var title=[{
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "release year": 1973,
+    "formates": ["CD", "8T", "LP"],
+    "gold": true 
+},
+{
+    "artist": "shebi Hortan",
+    "title": "musician",
+    "release year": 1981,
+    "formates": ["youtube", "insta", "X"]
+}]
+
+
+//! Accessing Nested Objects:
+var myStorage = {
+    "car": {
+        "inside":{
+            "glove box": "maps",
+            "dashboard": "extra large"
+        },
+        "outside":{
+            "trunk": "jeep",
+        }
+    }
+};
+
+var gloveBoxContents= myStorage.car.inside["glove box"];
+console.log(gloveBoxContents);
+
+//!Accessing nested arrays:
+var myPlants =[{
+    type: "flowers",
+    list:["rose", "tulip", "dandelion"]
+},
+{
+    type: "trees",
+    list:["fir", "pine", "birch"]
+}];
+
+var secondTree = myPlants[1].list[1];
+console.log(secondTree);
