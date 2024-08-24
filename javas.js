@@ -998,3 +998,15 @@ let temp = thermos.temprature;
 thermos.temprature = 26;
 temp = thermos.temprature;
 console.log(temp);
+
+
+let abs= {
+    "student": "Akash",
+    "class": 12,
+    "age": 16,
+    "grade": "A"
+
+}
+
+console.log(Object.keys(abs));
+console.log(Object.values(abs));
