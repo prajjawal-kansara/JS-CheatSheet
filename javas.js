@@ -779,7 +779,7 @@ console.log(myconcat([1, 2, 3], [4, 5, 6]));
 //!Write higher order arrow Function:
 //higher order function is a function that takes another function as an argument
 //or returns a function as a result.
-const  realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
 
 const squareList = (arr) => {
     const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);
@@ -791,8 +791,8 @@ console.log(squaredIntegers);  //returns square of +ve integers
 
 /***************************/
 //!Default Parameters:
-const increament = (function(){
-    return function increament(number, value){
+const increament = (function () {
+    return function increament(number, value) {
         return number + value;
     };
 })();
@@ -803,136 +803,138 @@ console.log(increament(10));  //10
 //!Using rest operator with function parameters:
 const sums = (function () {
     return function sums(...args) {     //sum(x,y,z)
-      // const args = [x, y, z]
-      return args.reduce((a, b) => a + b, 0);
+        // const args = [x, y, z]
+        return args.reduce((a, b) => a + b, 0);
     };
-  })();
-  console.log(sums(1, 2, 3));
-  
-  //!Use the spread operator to evaluate Arrays In-place:
-  const arr5 = ['jan', 'feb', 'mar', 'apr', 'may'];
-  let arr3;
-  (function () {
+})();
+console.log(sums(1, 2, 3));
+
+//!Use the spread operator to evaluate Arrays In-place:
+const arr5 = ['jan', 'feb', 'mar', 'apr', 'may'];
+let arr3;
+(function () {
     arr3 = [...arr5];    // change this line(arr3=arr)
     arr5[0] = 'noni'
-  })();
-  console.log(arr3);
-  
-  //!Use destructuring assignment to assign variables from objects:
-  var vox ={x: 3.6, y: 7.4, z: 6.54};
-  
-  var x = vox.x;   // x = 3.6
-  var y = vox.y;   // y = 7.4
-  var z = vox.z;   // z = 6.54
-  
-  const {x:r, y:p, z:q} = vox;  //a=3.6, b=7.4, c=6.54
-  console.log(r,p,q);
-  //
-  const AVG_TEMPERATURES = {
+})();
+console.log(arr3);
+
+//!Use destructuring assignment to assign variables from objects:
+var vox = { x: 3.6, y: 7.4, z: 6.54 };
+
+var x = vox.x;   // x = 3.6
+var y = vox.y;   // y = 7.4
+var z = vox.z;   // z = 6.54
+
+const { x: r, y: p, z: q } = vox;  //a=3.6, b=7.4, c=6.54
+console.log(r, p, q);
+//
+const AVG_TEMPERATURES = {
     today: 77.5, tomorrow: 79
-  };
-  
-  function getTempOfTmrw(avgTemperatures){
+};
+
+function getTempOfTmrw(avgTemperatures) {
     "use strict";
-    const {tomorrow:tempOfTomorrow} = avgTemperatures;
+    const { tomorrow: tempOfTomorrow } = avgTemperatures;
     return tempOfTomorrow;
-  }
-  
-  console.log(getTempOfTmrw(AVG_TEMPERATURES));
-  
-  //!Destructuring assignment with nested objects:
-  const LOCAL_FORECAST = {
+}
+
+console.log(getTempOfTmrw(AVG_TEMPERATURES));
+
+//!Destructuring assignment with nested objects:
+const LOCAL_FORECAST = {
     today: { min: 72, max: 83 },
     tomorrow: { min: 73.3, max: 84.6 }
-  };
-  
-  function getMaxOfTmrw(forecast){
+};
+
+function getMaxOfTmrw(forecast) {
     "use strict";
-     const {tomorrow: {max}} = forecast;  
+    const { tomorrow: { max } } = forecast;
     //or : const{tomorrow: {max: maxof tomorrow}} = forecast;}}  
     // return maxoftommorrow;
     return max;
-  }
-  
-  console.log(getMaxOfTmrw(LOCAL_FORECAST));
-  
-  //!Destructuring assignment to assign variables from arrays:
-  const [n, m, , o] = [1, 2, 3, 4, 5, 6];
-  console.log(n,m,o);   // 1,2,4
-  
-  let d=8, e=6;
-  (() => {
+}
+
+console.log(getMaxOfTmrw(LOCAL_FORECAST));
+
+//!Destructuring assignment to assign variables from arrays:
+const [n, m, , o] = [1, 2, 3, 4, 5, 6];
+console.log(n, m, o);   // 1,2,4
+
+let d = 8, e = 6;
+(() => {
     "use strict";
     [d, e] = [e, d]
-  })();
-  
-  console.log(e);  // 6
-  console.log(d);  // 8
-  
-  //!Use Destructuring Assignment with the rest Operator:
-  const source = [1,2,3,4,5,6,7,8,9,10];
-  function removeFirstTwo(list){
-    const [ , , , ...arr4] = list;
-  
+})();
+
+console.log(e);  // 6
+console.log(d);  // 8
+
+//!Use Destructuring Assignment with the rest Operator:
+const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function removeFirstTwo(list) {
+    const [, , , ...arr4] = list;
+
     return arr4;
-  }
-  const arr4 = removeFirstTwo(source);
-  console.log(arr4);
-  
-  //!Use Destructuring Assignment to Pass an Object as a Function's Parameters:
-  const stats ={
+}
+const arr4 = removeFirstTwo(source);
+console.log(arr4);
+
+//!Use Destructuring Assignment to Pass an Object as a Function's Parameters:
+const stats = {
     max: 56.78,
     standard_deviation: 4.34,
     median: 34.54,
     mode: 23.87,
     min: -0.75,
     average: 35.85
-  };
-  const half = (function(){
-    return function half({max, min}){    //max,min are the keys of the object stats
-            //      half(stats)
-      return (max + min) / 2.0;          
-          // (stats.max + stats.min)   
-  // it will return the same thing but we are not using stats, only using the keys that we need, this is used in API calls, when we getting request from AJAXrequest, APIrequest, its hold so much data, we are not using all of them, we are only using the keys that we need.
+};
+const half = (function () {
+    return function half({ max, min }) {    //max,min are the keys of the object stats
+        //      half(stats)
+        return (max + min) / 2.0;
+        // (stats.max + stats.min)   
+        // it will return the same thing but we are not using stats, only using the keys that we need, this is used in API calls, when we getting request from AJAXrequest, APIrequest, its hold so much data, we are not using all of them, we are only using the keys that we need.
     };
-  }) ();
-  console.log(half(stats));
+})();
+console.log(half(stats));
 
 
-  //!Create String using Templet Literals:
-  const person = {name: "Billie", age: 28};
-  const greeting = `Hello, my name is ${person.name} and I am ${person.age} year old`;
-  console.log(greeting);
+//!Create String using Templet Literals:
+const person = { name: "Billie", age: 28 };
+const greeting = `Hello, my name is ${person.name} and I am ${person.age} year old`;
+console.log(greeting);
 
-  /*****************************/
+/*****************************/
 
-  const results ={
-    success : ["max-length", "no-amd", "prefer-arrow-function"],
+const results = {
+    success: ["max-length", "no-amd", "prefer-arrow-function"],
     failure: ["no-var", "var-on-top", "linebreak"],
     skipped: ["no-extra-semi", "no-mixed-spaces-and-tabs"]
-  };
+};
 
-  function makeList(arr8){
+function makeList(arr8) {
     const resultDisplayArray = [];
-    for (let i=0; i<arr8.length; i++){
+    for (let i = 0; i < arr8.length; i++) {
         resultDisplayArray.push(`<li cliass="text-warning"> ${arr8[i]}</li>`)
     }
     return resultDisplayArray;
-  }
-  const resultDisplayArray = makeList(results.failure);
+}
+const resultDisplayArray = makeList(results.failure);
 
-  console.log(resultDisplayArray);
+console.log(resultDisplayArray);
 
 
 //!Write Concise object Literasls Declarartions Using Simple Fields:
+
 // const createPerson = (name, age, gender) => {
-    // return {
-    //     name: name,             key:value
-    //     age: age,
-    //     gender: gender
-    // };                          
-    //     A better way to do this
-const createPerson = (name, age, gender) => ({name, age, gender});
+// return {
+//     name: name,             key:value
+//     age: age,
+//     gender: gender
+// };                          
+//     A better way to do this
+
+const createPerson = (name, age, gender) => ({ name, age, gender });
 console.log(createPerson("Zodiac Hasbro", 56, "male"));
 
 
@@ -941,7 +943,7 @@ console.log(createPerson("Zodiac Hasbro", 56, "male"));
 const bicyclee = {
     gear: 2,
     // setGear : function (newGear){    we dont need to write 'function', here's a better alternative
-    setGear(newGear){      //this is a function inside an object
+    setGear(newGear) {      //this is a function inside an object
         this.gear = newGear;
     }
 };
@@ -950,8 +952,8 @@ console.log(bicyclee.gear);
 
 
 //!Use class syntax to Define a constructor Function:
-class SpaceShuttle{
-    constructor(targetPlanet){
+class SpaceShuttle {
+    constructor(targetPlanet) {
         this.targetPlanet = targetPlanet;
     }
 }
@@ -960,7 +962,7 @@ console.log(zeus.targetPlanet);
 
 /***********************************/
 
-function makeClass(){
+function makeClass() {
     class Vege {
         constructor(name) {
             this.name = name;
@@ -974,3 +976,25 @@ console.log(carrot.name);
 
 
 //!Use Getter and Setter to Control Access to an object:
+
+function madeCLass() {
+    class Thermostat {
+        constructor(temp) {
+            this._temp = 5 / 9 * (temp - 32);                 //this keyword is used to store variable(temp) that only accessble in particular class and '_temp', that underscore is used to signify that the variable(temp) is private 
+        }
+        get temprature() {
+            return this._temp;
+        }
+        set temprature(updatedTemp) {
+            this._temp = updatedTemp;
+        }
+    }
+    return Thermostat;
+}
+
+const Thermostat = madeCLass();
+const thermos = new Thermostat(100);
+let temp = thermos.temprature;
+thermos.temprature = 26;
+temp = thermos.temprature;
+console.log(temp);
